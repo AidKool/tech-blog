@@ -8,7 +8,7 @@ User.hasMany(Post, {
   onDelete: 'SET NULL',
 });
 
-// Posts belongsTo User
+// Posts belongsTo Users
 Post.belongsTo(User, {
   foreignKey: 'user_id',
 });
@@ -18,9 +18,21 @@ Post.hasMany(Comment, {
   foreignKey: 'post_id',
 });
 
+// Comments belongsTo Posts
 Comment.belongsTo(Post, {
   foreignKey: 'post_id',
   onDelete: 'CASCADE',
+});
+
+// Users have many Comments
+User.hasMany(Comment, {
+  foreignKey: 'user_id',
+  onDelete: 'SET NULL',
+});
+
+// Comments belongsTo Users
+Comment.belongsTo(User, {
+  foreignKey: 'user_id',
 });
 
 module.exports = {
