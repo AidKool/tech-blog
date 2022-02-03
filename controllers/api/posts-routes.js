@@ -78,4 +78,16 @@ router.put('/:id', async (req, res) => {
   }
 });
 
+router.delete('/:id', async (req, res) => {
+  try {
+    const postsData = await Post.destroy({ where: { id: req.params.id } });
+    if (!postsData) {
+      return res.status(404).json({ message: 'Post not found.' });
+    }
+    return res.status(200).json(postsData);
+  } catch (error) {
+    return res.status(500).json(error);
+  }
+});
+
 module.exports = router;
