@@ -51,4 +51,16 @@ router.get('/:id', async (req, res) => {
   }
 });
 
+router.post('/', async (req, res) => {
+  try {
+    await Post.create(req.body);
+    const postsData = await Post.findOne({
+      where: { title: req.body.title },
+    });
+    return res.status(201).json(postsData);
+  } catch (error) {
+    return res.status(500).json(error);
+  }
+});
+
 module.exports = router;
