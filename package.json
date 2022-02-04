@@ -1,7 +1,9 @@
 {
   "name": "tech-blog",
   "version": "1.0.0",
-  "browserslist": "> 0.2%, last 2 versions",
+  "browserslist": [
+    "defaults"
+  ],
   "description": "",
   "main": "server.js",
   "scripts": {

@@ -3,6 +3,8 @@
 // bulma
 @import '../node_modules/bulma/bulma.sass';
 
-.test {
-  padding: 1rem;
+.card > header {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
 }

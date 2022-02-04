@@ -2,13 +2,13 @@ const { Post } = require('../models');
 
 const postData = [
   {
-    title: 'This is little_john first post',
-    content: 'little_john has written his first blog post!',
+    title: 'This is cranky_pants first post',
+    content: 'cranky_pants has written his first blog post!',
     user_id: 1,
   },
   {
-    title: 'This is little_john second post',
-    content: 'Another blog post by little_john!',
+    title: 'This is cranky_pants second post',
+    content: 'Another blog post by cranky_pants!',
     user_id: 1,
   },
   {
@@ -22,13 +22,13 @@ const postData = [
     user_id: 2,
   },
   {
-    title: 'I am seriously cranky',
-    content: 'and I like it!!!!',
+    title: 'First post by little_john',
+    content: 'getting there!',
     user_id: 3,
   },
   {
-    title: 'why is life so hard????',
-    content: 'someone tell me!!!',
+    title: 'little_john is on a roll!',
+    content: 'yeah baby!',
     user_id: 3,
   },
   {

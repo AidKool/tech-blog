@@ -8,7 +8,13 @@
   <title>Tech Blog</title>
 </head>
 <body>
-  <div class="test">This is a test</div>
-  {{{body}}}
+  <div class="container">
+    <header class="header">
+      {{> navbar-partial}}
+    </header>
+    <main class="section">
+      {{{body}}}
+    </main>
+  </div>
 </body>
 </html>
