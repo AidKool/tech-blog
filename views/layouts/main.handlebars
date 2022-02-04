@@ -8,13 +8,9 @@
   <title>Tech Blog</title>
 </head>
 <body>
-  <div class="container">
-    <header class="header">
-      {{> navbar-partial}}
-    </header>
-    <main class="section">
-      {{{body}}}
-    </main>
-  </div>
+  {{> navbar-partial}}
+  <main class="section px-4">
+    {{{body}}}
+  </main>
 </body>
 </html>
