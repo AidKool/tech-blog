@@ -7,14 +7,25 @@
             class='card-header has-background-primary py-2 px-3 is-flex is-align-items-center'
           >
             {{title}}
-            <p class='is-size-7'>Posted by
-              <span
-                class='has-text-white has-text-weight-bold'
-              >{{user.username}}</span>
-              on
-              <span
-                class='has-text-white has-text-weight-bold'
-              >{{createdAt}}</span></p>
+            {{#if updated}}
+              <p class='is-size-7'>Updated by
+                <span
+                  class='has-text-white has-text-weight-bold'
+                >{{user.username}}</span>
+                on
+                <span
+                  class='has-text-white has-text-weight-bold'
+                >{{updatedAt}}</span></p>
+            {{else}}
+              <p class='is-size-7'>Posted by
+                <span
+                  class='has-text-white has-text-weight-bold'
+                >{{user.username}}</span>
+                on
+                <span
+                  class='has-text-white has-text-weight-bold'
+                >{{createdAt}}</span></p>
+            {{/if}}
           </header>
           <section class='card-content px-3'>
             {{content}}

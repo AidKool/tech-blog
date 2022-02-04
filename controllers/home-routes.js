@@ -8,7 +8,7 @@ router.get('/', async (_, res) => {
         {
           model: User,
           attributes: {
-            exclude: ['password'],
+            exclude: ['id', 'password'],
           },
         },
       ],
