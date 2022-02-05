@@ -6,26 +6,34 @@
           <header
             class='card-header has-background-primary py-2 px-3 is-flex is-align-items-center'
           >
-            {{title}}
-            {{#if updated}}
-              <p class='is-size-7'>Updated by
-                <span
-                  class='has-text-white has-text-weight-bold'
-                >{{user.username}}</span>
-                on
-                <span
-                  class='has-text-white has-text-weight-bold'
-                >{{updatedAt}}</span></p>
-            {{else}}
-              <p class='is-size-7'>Posted by
-                <span
-                  class='has-text-white has-text-weight-bold'
-                >{{user.username}}</span>
-                on
-                <span
-                  class='has-text-white has-text-weight-bold'
-                >{{createdAt}}</span></p>
-            {{/if}}
+            <div>
+              {{title}}
+            </div>
+            <div class='metadata'>
+              {{#if updated}}
+                <p class='is-size-7 has-text-right'>
+                  Updated by
+                  <span class='has-text-white has-text-weight-bold'>
+                    {{user.username}}
+                  </span>
+                </p>
+                <p class='has-text-right is-size-7'>
+                  {{format_date updatedAt}}
+                  ago
+                </p>
+              {{else}}
+                <p class='is-size-7 has-text-right'>
+                  Posted by
+                  <span class='has-text-white has-text-weight-bold'>
+                    {{user.username}}
+                  </span>
+                </p>
+                <p class='has-text-right is-size-7'>
+                  {{format_date createdAt}}
+                  ago
+                </p>
+              {{/if}}
+            </div>
           </header>
           <section class='card-content px-3'>
             {{content}}

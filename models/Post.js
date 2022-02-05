@@ -1,12 +1,7 @@
 const { Model, DataTypes } = require('sequelize');
-const moment = require('moment');
 const sequelize = require('../config/connection');
 
-class Post extends Model {
-  // getCreatedAt() {
-  //   return moment(this.createdAt).format('DD-MM-YYYY');
-  // }
-}
+class Post extends Model {}
 
 Post.init(
   {
@@ -34,22 +29,6 @@ Post.init(
     updated: {
       type: DataTypes.BOOLEAN,
       defaultValue: false,
-    },
-    createdAt: {
-      type: DataTypes.DATE,
-      get() {
-        return moment(this.getDataValue('createdAt')).format(
-          'DD-MM-YYYY HH:mm:ss'
-        );
-      },
-    },
-    updatedAt: {
-      type: DataTypes.DATE,
-      get() {
-        return moment(this.getDataValue('updatedAt')).format(
-          'DD-MM-YYYY HH:mm:ss'
-        );
-      },
     },
   },
   {
