@@ -25,6 +25,14 @@ $navbar-breakpoint: 768px;
   width: 100%;
 }
 
+.posts-container a:hover {
+  text-decoration: underline;
+}
+
+ul {
+  list-style: none;
+}
+
 .separator {
   display: flex;
   align-items: center;

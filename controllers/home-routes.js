@@ -29,36 +29,41 @@ router.get('/', async (_, res) => {
   }
 });
 
-// router.get('/:id', async (req, res) => {
-//   try {
-//     const postsData = await Post.findByPk(req.params.id, {
-//       include: [
-//         {
-//           model: User,
-//           attributes: {
-//             exclude: ['password'],
-//           },
-//         },
-//         {
-//           model: Comment,
-//           include: [
-//             {
-//               model: User,
-//               attributes: {
-//                 exclude: ['password'],
-//               },
-//             },
-//           ],
-//         },
-//       ],
-//     });
-//     if (!postsData) {
-//       return res.status(404).json({ message: 'Post not found.' });
-//     }
-//     return res.status(200).json(postsData);
-//   } catch (error) {
-//     return res.status(500).json(error);
-//   }
-// });
+router.get('/posts/:id', async (req, res) => {
+  try {
+    const postsData = await Post.findByPk(req.params.id, {
+      include: [
+        {
+          model: User,
+          attributes: {
+            exclude: ['password'],
+          },
+        },
+        {
+          model: Comment,
+          attributes: {
+            exclude: ['post_id'],
+          },
+          include: [
+            {
+              model: User,
+              attributes: {
+                exclude: ['password'],
+              },
+            },
+          ],
+        },
+      ],
+    });
+    if (!postsData) {
+      return res.status(404).json({ message: 'Post not found.' });
+    }
+    const postAndComments = postsData.get({ plain: true });
+    return res.render('single-post', postAndComments);
+    // return res.status(200).json(postsData);
+  } catch (error) {
+    return res.status(500).json(error);
+  }
+});
 
 module.exports = router;
