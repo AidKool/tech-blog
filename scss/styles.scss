@@ -5,7 +5,7 @@ $navbar-breakpoint: 768px;
 // bulma
 @import '../node_modules/bulma/bulma.sass';
 
-.card > header {
+.posts-container .card > header {
   width: 100%;
   display: flex;
   justify-content: space-between;
@@ -15,4 +15,27 @@ $navbar-breakpoint: 768px;
   nav {
     padding: 0 1rem;
   }
+}
+
+.form-container .card {
+  max-width: 450px;
+}
+
+.form-container .button {
+  width: 100%;
+}
+
+.separator {
+  display: flex;
+  align-items: center;
+}
+
+.separator p {
+  padding: 0 2rem;
+}
+
+.separator .line {
+  flex: 1;
+  height: 1px;
+  background-color: #dbdbdb;
 }

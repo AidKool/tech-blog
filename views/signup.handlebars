@@ -1,48 +1,20 @@
-<form>
-  <div class='field'>
-    <label for='username' class='label'>Username</label>
-    <div class='control has-icons-left has-icons-right'>
-      <input
-        class='input is-success'
-        type='text'
-        placeholder='Type your username here'
-        id='username'
-      />
-      <span class='icon is-small is-left'>
-        <i class='fas fa-user'></i>
-      </span>
-      <span class='icon is-small is-right'>
-        <i class='fas fa-check'></i>
-      </span>
-    </div>
-    <p class='help is-success'>This username is available</p>
-  </div>
-
-  <div class='field'>
-    <label for='password' class='label'>Password</label>
-    <div class='control has-icons-left has-icons-right'>
-      <input
-        class='input is-success'
-        type='password'
-        placeholder='Type your password here'
-        id='username'
-      />
-      <span class='icon is-small is-left'>
-        <i class='fas fa-user'></i>
-      </span>
-      <span class='icon is-small is-right'>
-        <i class='fas fa-check'></i>
-      </span>
-    </div>
-    <p class='help is-success'>This password is valid</p>
-  </div>
-
-  <div class='field is-grouped'>
-    <div class='control'>
-      <button class='button is-link'>Submit</button>
-    </div>
-    <div class='control'>
-      <button class='button is-link is-light'>Cancel</button>
-    </div>
-  </div>
-</form>
+<div class='container'>
+  <section class='columns my-auto form-container'>
+    <section class='column'>
+      <p class='is-size-4 has-text-centered has-text-weight-bold mb-4'>Register
+        to publish a post or add comments</p>
+        <section class='card px-5 py-5 my-0 mx-auto'>
+          <form>
+            {{> username-password-partial}}
+          <div class='field my-4'>
+            <div class='control'>
+              <button class='button is-link' type='submit'>Sign Up</button>
+            </div>
+          </div>
+        </form>
+        {{> separator-partial}}
+        <a href='/login' class='button is-primary mx-auto'>Log In</a>
+      </section>
+    </section>
+  </section>
+</div>

@@ -1,6 +1,9 @@
 const router = require('express').Router();
 const { User, Post, Comment } = require('../models');
 
+router.get('/login', (_, res) => res.render('login'));
+router.get('/signup', (_, res) => res.render('signup'));
+
 router.get('/', async (_, res) => {
   try {
     const postsData = await Post.findAll({
