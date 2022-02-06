@@ -1,5 +1,4 @@
 const router = require('express').Router();
-const { compareAsc } = require('date-fns');
 const { User, Post, Comment } = require('../models');
 
 router.get('/login', (_, res) => res.render('login'));
@@ -16,12 +15,9 @@ router.get('/', async (_, res) => {
           },
         },
       ],
+      order: [['updatedAt', 'DESC']],
     });
-    const posts = postsData
-      .map((post) => post.get({ plain: true }))
-      .sort((post1, post2) =>
-        compareAsc(new Date(post2.updatedAt), new Date(post1.updatedAt))
-      );
+    const posts = postsData.map((post) => post.get({ plain: true }));
     return res.render('homepage', { posts });
     // return res.status(200).json(postsData);
   } catch (error) {
