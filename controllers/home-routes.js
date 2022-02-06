@@ -50,6 +50,7 @@ router.get('/posts/:id', async (req, res) => {
           ],
         },
       ],
+      order: [[{ model: Comment }, 'updatedAt', 'DESC']],
     });
     if (!postsData) {
       return res.status(404).json({ message: 'Post not found.' });
