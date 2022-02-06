@@ -12,7 +12,10 @@ router.post('/', async (req, res) => {
 
 router.put('/:id', async (req, res) => {
   try {
-    await Comment.update(req.body, { where: { id: req.params.id } });
+    await Comment.update(
+      { ...req.body, updated: true },
+      { where: { id: req.params.id } }
+    );
     const commentsData = await Comment.findByPk(req.params.id);
     if (!commentsData) {
       return res.status(404).json({ message: 'Comment not found' });

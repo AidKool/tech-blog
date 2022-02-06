@@ -29,6 +29,10 @@ Comment.init(
         key: 'id',
       },
     },
+    updated: {
+      type: DataTypes.BOOLEAN,
+      defaultValue: false,
+    },
   },
   {
     sequelize,

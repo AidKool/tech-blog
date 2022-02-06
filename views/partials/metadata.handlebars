@@ -1,0 +1,25 @@
+<div class='metadata'>
+  {{#if updated}}
+    <p class='is-size-7 has-text-right'>
+      Updated by
+      <span class='has-text-white has-text-weight-bold'>
+        {{user.username}}
+      </span>
+    </p>
+    <p class='has-text-right is-size-7'>
+      {{format_date updatedAt}}
+      ago
+    </p>
+  {{else}}
+    <p class='is-size-7 has-text-right'>
+      Posted by
+      <span class='has-text-white has-text-weight-bold'>
+        {{user.username}}
+      </span>
+    </p>
+    <p class='has-text-right is-size-7'>
+      {{format_date createdAt}}
+      ago
+    </p>
+  {{/if}}
+</div>

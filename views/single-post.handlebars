@@ -1,3 +1,29 @@
-<h1>
-  {{title}}
-</h1>
+<section class="container">
+  <div class="card">
+    {{> card-partial}}
+  </div>
+  <p class="mb-5 mt-5 subtitle">Latest Replies:</p>
+  <ul>
+    {{#each this.comments}}
+    <li>
+      <div class="card mb-3">
+        <header class="card-header py-2 px-3 is-size-7 has-background-grey is-flex is-justify-content-space-between">
+          <p class="has-text-black has-text-weight-bold">
+            <span class="has-text-white has-text-weight-bold">{{this.user.username}}</span> replied
+          </p>
+          <p class="has-text-weight-bold has-text-black">
+          {{#if updated}}
+            Updated {{format_date updatedAt}}
+          {{else}}
+            Posted {{format_date createdAt}}
+          {{/if}}
+          ago</p>
+        </header>
+        <div class="card-content py-2 px-3">
+          <p>{{this.content}}</p>
+        </div>
+      </div>
+    </li>
+    {{/each}}
+  </ul>
+</section>
