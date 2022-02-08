@@ -18,7 +18,6 @@ router.get('/', async (req, res) => {
       order: [['updatedAt', 'DESC']],
     });
     const posts = postsData.map((post) => post.get({ plain: true }));
-    console.log('loggedIn', req.session.loggedIn);
     return res.render('homepage', { posts, loggedIn: req.session.loggedIn });
     // return res.status(200).json(postsData);
   } catch (error) {
