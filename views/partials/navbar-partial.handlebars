@@ -24,25 +24,25 @@
         <a href='/' class='navbar-item'>
           Home
         </a>
-        <a class='navbar-item'>
-          Dashboard
         {{#if loggedIn}}
-        <a class='navbar-item logout'>
-          Log Out
-        </a>
+          <a class='navbar-item'>
+            Dashboard
+          </a>
+          <a class='navbar-item logout'>
+            Log Out
+          </a>
         {{else}}
-        </a>
-        <a href='/login' class='navbar-item'>
-          Log In
-        </a>
-        <a href='/signup' class='navbar-item'>
-          Sign Up
-        </a>
+          <a href='/login' class='navbar-item'>
+            Log In
+          </a>
+          <a href='/signup' class='navbar-item'>
+            Sign Up
+          </a>
         {{/if}}
       </div>
     </div>
   </div>
 </nav>
 {{#if loggedIn}}
-<script src="/js/logout.js"></script>
+  <script src='/js/logout.js'></script>
 {{/if}}

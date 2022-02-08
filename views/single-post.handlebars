@@ -2,7 +2,18 @@
   <div class="card">
     {{> card-partial}}
   </div>
-  <p class="mb-5 mt-5 subtitle">Latest Replies:</p>
+  {{#if loggedIn}}
+  <form class="comment-form">
+    <label for="comment">Post your comment</label>
+      <textarea name="comment" id="comment"></textarea>
+      <button class="button is-link" type="submit">Submit</button>
+  </form>
+  {{else}}
+  <p class="mt-3">
+    <a href="/signup">Sign up</a> or <a href="/login">log in</a> to post a comment
+  </p>
+  {{/if}}
+  <p class="mb-3 mt-3 subtitle">Latest Replies:</p>
   <ul>
     {{#each this.comments}}
     <li>
@@ -12,12 +23,12 @@
             <span class="has-text-white has-text-weight-bold">{{this.user.username}}</span> replied
           </p>
           <p class="has-text-weight-bold has-text-black">
-          {{#if updated}}
+            {{#if updated}}
             Updated {{format_date updatedAt}}
-          {{else}}
+            {{else}}
             Posted {{format_date createdAt}}
-          {{/if}}
-          ago</p>
+            {{/if}}
+            ago</p>
         </header>
         <div class="card-content py-2 px-3">
           <p>{{this.content}}</p>
@@ -27,3 +38,6 @@
     {{/each}}
   </ul>
 </section>
+{{#if loggedIn}}
+  <script src="/js/comments.js"></script>
+{{/if}}

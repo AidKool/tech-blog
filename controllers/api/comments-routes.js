@@ -3,7 +3,11 @@ const { Comment } = require('../../models');
 
 router.post('/', async (req, res) => {
   try {
-    await Comment.create(req.body);
+    await Comment.create({
+      content: req.body.content,
+      user_id: req.session.user.id,
+      post_id: req.body.post_id,
+    });
     return res.status(201).json({ message: 'Message posted successfully' });
   } catch (error) {
     return res.status(500).json(error);
