@@ -34,7 +34,13 @@ router.post('/login', async (req, res) => {
         .status(400)
         .json({ message: 'Login failed. Please try again.' });
     }
-    return res.status(200).json({ message: 'Login successful.' });
+    return req.session.save(() => {
+      req.session.user = userData;
+      req.session.loggedIn = true;
+      return res.status(200).json({
+        user: userData,
+      });
+    });
   } catch (error) {
     return res.status(500).json(error);
   }
