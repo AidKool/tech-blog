@@ -42,8 +42,12 @@ router.post('/login', async (req, res) => {
 
 router.post('/signup', async (req, res) => {
   try {
-    await User.create(req.body);
-    return res.status(201).json({ message: 'Signup successful.' });
+    const userData = await User.create(req.body);
+    return req.session.save(() => {
+      req.session.user = userData;
+      req.session.loggedIn = true;
+      return res.status(201).json(userData);
+    });
   } catch (error) {
     return res.status(500).json(error);
   }

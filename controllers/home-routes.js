@@ -4,7 +4,7 @@ const { User, Post, Comment } = require('../models');
 router.get('/login', (_, res) => res.render('login'));
 router.get('/signup', (_, res) => res.render('signup'));
 
-router.get('/', async (_, res) => {
+router.get('/', async (req, res) => {
   try {
     const postsData = await Post.findAll({
       include: [
@@ -18,7 +18,8 @@ router.get('/', async (_, res) => {
       order: [['updatedAt', 'DESC']],
     });
     const posts = postsData.map((post) => post.get({ plain: true }));
-    return res.render('homepage', { posts });
+    console.log('loggedIn', req.session.loggedIn);
+    return res.render('homepage', { posts, loggedIn: req.session.loggedIn });
     // return res.status(200).json(postsData);
   } catch (error) {
     return res.status(500).json(error);

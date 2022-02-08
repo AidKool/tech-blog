@@ -26,13 +26,19 @@
         </a>
         <a class='navbar-item'>
           Dashboard
+        {{#if loggedIn}}
+        <a href='/logout' class='navbar-item'>
+          Log Out
+        </a>
+        {{else}}
         </a>
         <a href='/login' class='navbar-item'>
-          Login
+          Log In
         </a>
         <a href='/signup' class='navbar-item'>
-          Signup
+          Sign Up
         </a>
+        {{/if}}
       </div>
     </div>
   </div>
