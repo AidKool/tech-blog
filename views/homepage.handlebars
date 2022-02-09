@@ -1,14 +1,14 @@
-<div class='container'>
-  <section class='columns posts-container'>
-    <section class='column'>
-      <h2 class='title'>Latest Posts</h2>
-      <ul>
-        {{#each posts as |post|}}
-          <li class='card mb-3'>
-            {{> card-partial}}
-          </li>
-        {{/each}}
-      </ul>
-    </section>
-  </section>
+<div class='container px-6'>
+  {{> intro}}
+  <h2 class='title'>Latest Posts</h2>
+  <ul>
+    {{#each posts as |post|}}
+    <p class='is-flex is-justify-content-space-between' data-postid='{{this.id}}'>
+      <span>
+        <a href='/posts/{{this.id}}' class=''>{{this.title}}</a>
+      </span>
+      {{> metadata}}
+    </p>
+    {{/each}}
+  </ul>
 </div>
