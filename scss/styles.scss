@@ -1,6 +1,7 @@
 @charset "utf-8";
 
 $navbar-breakpoint: 768px;
+$toggle-transition: height 350ms ease-in-out;
 
 // bulma
 @import '../node_modules/bulma/bulma.sass';
@@ -50,4 +51,24 @@ textarea#comment {
   height: 75px;
   width: 100%;
   padding: 0.5rem;
+}
+
+.post-form-container {
+  height: 0;
+  overflow: hidden;
+  transition: $toggle-transition;
+}
+
+.post-form input,
+.post-form textarea {
+  width: 100%;
+  padding: 0.5rem;
+}
+
+.post-form textarea {
+  height: 75px;
+}
+
+.add-post:hover {
+  cursor: pointer;
 }

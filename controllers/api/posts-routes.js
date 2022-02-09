@@ -3,7 +3,13 @@ const { Post } = require('../../models');
 
 router.post('/', async (req, res) => {
   try {
-    await Post.create(req.body);
+    // await Post.create({ ...req.body, user_id: req.session.user.id });
+    await Post.create({
+      title: req.body.title,
+      content: req.body.content,
+      user_id: req.session.user.id,
+    });
+    // await Post.create(req.body);
     const postsData = await Post.findOne({
       where: { title: req.body.title },
     });

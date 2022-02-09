@@ -70,10 +70,10 @@ router.get('/dashboard', async (req, res) => {
   try {
     const postsData = await Post.findAll({
       where: { user_id: req.session.user.id },
+      order: [['updatedAt', 'DESC']],
     });
     const posts = postsData.map((post) => post.get({ plain: true }));
-    console.log(posts);
-    res.render('dashboard', { posts, loggedIn: req.session.loggedIn });
+    return res.render('dashboard', { posts, loggedIn: req.session.loggedIn });
   } catch (error) {
     return res.status(500).json(error);
   }
