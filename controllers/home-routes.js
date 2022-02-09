@@ -55,12 +55,18 @@ router.get('/posts/:id', async (req, res) => {
     if (!postsData) {
       return res.status(404).json({ message: 'Post not found.' });
     }
+
     const postAndComments = postsData.get({ plain: true });
+
+    if (req.headers.referer.includes('dashboard')) {
+      return res.status(200).json(postAndComments);
+    }
+
     return res.render('single-post', {
       ...postAndComments,
       loggedIn: req.session.loggedIn,
     });
-    // return res.status(200).json(postsData);
+    // return res.status(200).json(postAndComments);
   } catch (error) {
     return res.status(500).json(error);
   }

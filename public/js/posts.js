@@ -1,4 +1,5 @@
 const deleteBtns = document.querySelectorAll('.delete-btn');
+const editBtns = document.querySelectorAll('.edit-btn');
 const postFormContainer = document.querySelector('.post-form-container');
 const postForm = document.querySelector('.post-form');
 const addPostBtn = document.querySelector('.add-post');
@@ -33,8 +34,6 @@ addPostBtn.addEventListener('click', toggleAddPost);
 const submitPost = async (event) => {
   event.preventDefault();
 
-  console.log('submitted');
-
   const title = document.querySelector('#post-title').value.trim();
   const content = document.querySelector('#post-content').value.trim();
 
@@ -52,4 +51,49 @@ const submitPost = async (event) => {
   }
 };
 
-postForm.addEventListener('submit', submitPost);
+const updatePost = async (event) => {
+  event.preventDefault();
+
+  const id = JSON.parse(localStorage.getItem('id'));
+
+  const title = document.querySelector('#post-title').value.trim();
+  const content = document.querySelector('#post-content').value.trim();
+
+  if (title && content) {
+    const response = await fetch(`/api/posts/${id}`, {
+      method: 'PUT',
+      body: JSON.stringify({ title, content }),
+      headers: { 'Content-Type': 'application/json' },
+    });
+    if (response.ok) {
+      localStorage.clear();
+      document.location.reload();
+    } else {
+      alert('Failed to add the post.');
+    }
+  }
+};
+
+postForm.addEventListener('submit', (event) => {
+  event.preventDefault();
+  if (JSON.parse(localStorage.getItem('id'))) {
+    updatePost(event);
+  } else {
+    submitPost(event);
+  }
+});
+
+const loadPost = async (event) => {
+  const id = event.currentTarget.parentElement.parentElement.dataset.postid;
+  localStorage.setItem('id', id);
+
+  const response = await fetch(`posts/${id}`);
+  const data = await response.json();
+  toggleAddPost();
+  document.querySelector('#post-title').value = data.title;
+  document.querySelector('#post-content').value = data.content;
+};
+
+editBtns.forEach((editBtn) => {
+  editBtn.addEventListener('click', loadPost);
+});
