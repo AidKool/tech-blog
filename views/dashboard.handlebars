@@ -27,34 +27,37 @@
       <div class='field my-4'>
         <div class='control'>
           <button class='button is-link' type='submit'>Submit</button>
+          <button class='button is-danger cancel-btn'>Cancel</button>
         </div>
       </div>
     </form>
   </div>
   {{#if posts}}
-    {{#each posts}}
-      <p
-        class='is-flex is-justify-content-space-between'
-        data-postid='{{this.id}}'
-      >
-        <span>
-          <i class='far fa-edit edit-btn'></i>
-          <i class='far fa-trash-alt delete-btn'></i>
-          <a href='/posts/{{this.id}}' class=''>{{this.title}}</a>
-        </span>
-        <span class='is-size-7'>
-          {{#if updated}}
-            Updated
-            {{format_date updatedAt}}
-            ago
-          {{else}}
-            Posted
-            {{format_date createdAt}}
-            ago
-          {{/if}}
-        </span>
-      </p>
-    {{/each}}
+    <ul class='post-list'>
+      {{#each posts}}
+        <li
+          class='is-flex is-justify-content-space-between'
+          data-postid='{{this.id}}'
+        >
+          <span>
+            <i class='far fa-edit edit-btn'></i>
+            <i class='far fa-trash-alt delete-btn'></i>
+            <a href='/posts/{{this.id}}' class=''>{{this.title}}</a>
+          </span>
+          <span class='is-size-7'>
+            {{#if updated}}
+              Updated
+              {{format_date updatedAt}}
+              ago
+            {{else}}
+              Posted
+              {{format_date createdAt}}
+              ago
+            {{/if}}
+          </span>
+        </li>
+      {{/each}}
+    </ul>
   {{else}}
     <p class='first-post'>Don't be shy and add your first post!</p>
   {{/if}}

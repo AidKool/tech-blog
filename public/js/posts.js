@@ -4,6 +4,7 @@ const postFormContainer = document.querySelector('.post-form-container');
 const postForm = document.querySelector('.post-form');
 const addPostBtn = document.querySelector('.add-post');
 const firstPost = document.querySelector('.first-post');
+const cancelBtn = document.querySelector('.cancel-btn');
 
 const deletePost = async (event) => {
   const id = event.currentTarget.parentElement.parentElement.dataset.postid;
@@ -22,14 +23,28 @@ deleteBtns.forEach((deleteBtn) => {
   deleteBtn.addEventListener('click', deletePost);
 });
 
-const toggleAddPost = () => {
+const showAddPostForm = () => {
   const postFormHeight = postForm.getBoundingClientRect().height;
   postFormContainer.style.height = `${postFormHeight}px`;
   addPostBtn.style.display = 'none';
-  if (firstPost) firstPost.style.display = 'none';
+  if (firstPost) {
+    firstPost.style.display = 'none';
+  }
 };
 
-addPostBtn.addEventListener('click', toggleAddPost);
+const hideAddPostForm = () => {
+  postFormContainer.style.height = 0;
+  addPostBtn.style.display = 'block';
+  const postList = document.querySelector('.post-list');
+  if (!postList) {
+    if (firstPost) {
+      firstPost.style.display = 'block';
+    }
+  }
+};
+
+addPostBtn.addEventListener('click', showAddPostForm);
+cancelBtn.addEventListener('click', hideAddPostForm);
 
 const submitPost = async (event) => {
   event.preventDefault();
@@ -92,7 +107,7 @@ const loadPost = async (event) => {
     headers: { action: 'edit' },
   });
   const data = await response.json();
-  toggleAddPost();
+  showAddPostForm();
   document.querySelector('#post-title').value = data.title;
   document.querySelector('#post-content').value = data.content;
 };
