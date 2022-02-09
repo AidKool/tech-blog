@@ -1,74 +1,22 @@
 @charset "utf-8";
 
-$navbar-breakpoint: 768px;
-$toggle-transition: height 350ms ease-in-out;
+// variables
+@import './variables';
 
 // bulma
 @import '../node_modules/bulma/bulma.sass';
 
-@media screen and (min-width: 768px) and (max-width: 1024px) {
-  nav {
-    padding: 0 1rem;
-  }
-}
+// reset
+@import './reset';
 
-.form-container .card {
-  max-width: 450px;
-}
+// navbar
+@import './navbar';
 
-.form-container .button {
-  width: 100%;
-}
+// signup & login
+@import './signup&login';
 
-.posts-container a:hover {
-  text-decoration: underline;
-}
+// add posts
+@import './add-posts';
 
-ul {
-  list-style: none;
-}
-
-hr {
-  margin: 0;
-}
-
-.separator {
-  display: flex;
-  align-items: center;
-}
-
-.separator p {
-  padding: 0 2rem;
-}
-
-.separator .line {
-  flex: 1;
-  height: 1px;
-  background-color: #dbdbdb;
-}
-
-textarea#comment {
-  height: 75px;
-  width: 100%;
-  padding: 0.5rem;
-}
-
-.post-form-container {
-  height: 0;
-  overflow: hidden;
-  transition: $toggle-transition;
-}
-
-.post-form input,
-.post-form textarea {
-  width: 100%;
-  padding: 0.5rem;
-}
-
-.post-form textarea {
-  height: 75px;
-}
-
-.add-post:hover {
-  cursor: pointer;
-}
+// comments
+@import './comments';
