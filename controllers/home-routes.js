@@ -68,7 +68,7 @@ router.get('/posts/:id', async (req, res) => {
 
     const postAndComments = postsData.get({ plain: true });
 
-    if (req.headers.referer.includes('dashboard')) {
+    if (req.headers.action === 'edit') {
       return res.status(200).json(postAndComments);
     }
 

@@ -87,7 +87,10 @@ const loadPost = async (event) => {
   const id = event.currentTarget.parentElement.parentElement.dataset.postid;
   localStorage.setItem('id', id);
 
-  const response = await fetch(`posts/${id}`);
+  const response = await fetch(`posts/${id}`, {
+    method: 'GET',
+    headers: { action: 'edit' },
+  });
   const data = await response.json();
   toggleAddPost();
   document.querySelector('#post-title').value = data.title;
