@@ -1,21 +1,23 @@
-<div class='container'>
-  <section class='columns my-auto form-container'>
-    <section class='column'>
-      <p class='is-size-4 has-text-centered has-text-weight-bold mb-4'>Register
-        to publish a post or add comments</p>
+<main class="section px-4 is-flex is-align-items-center">
+  <div class='container'>
+    <section class='form-container'>
+      <section>
+        <p class='is-size-4 has-text-centered has-text-weight-bold mb-4'>Register
+          to publish a post or add comments</p>
         <section class='card px-5 py-5 my-0 mx-auto'>
           <form class="signup-form">
             {{> username-password-partial}}
-          <div class='field my-4'>
-            <div class='control'>
-              <button class='button is-link' type='submit'>Sign Up</button>
+            <div class='field my-4'>
+              <div class='control'>
+                <button class='button is-link' type='submit'>Sign Up</button>
+              </div>
             </div>
-          </div>
-        </form>
-        {{> separator-partial}}
-        <a href='/login' class='button is-primary mx-auto'>Log In</a>
+          </form>
+          {{> separator-partial}}
+          <a href='/login' class='button is-primary mx-auto'>Log In</a>
+        </section>
       </section>
     </section>
-  </section>
-</div>
+  </div>
+</main>
 <script src="/js/signup.js"></script>

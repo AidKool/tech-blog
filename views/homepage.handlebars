@@ -1,12 +1,14 @@
-<div class='container extra-padding'>
-  {{> intro}}
-  <h2 class='title'>Latest Posts</h2>
-  <ul>
-    {{#each posts as |post|}}
-    <li class='is-flex is-justify-content-space-between my-5' data-postid='{{this.id}}'>
-      <a href='/posts/{{this.id}}' class="pr-3">{{this.title}}</a>
-      {{> metadata}}
-    </li>
-    {{/each}}
-  </ul>
-</div>
+<main class="section px-4">
+  <div class='container extra-padding'>
+    {{> intro}}
+    <h2 class='title'>Latest Posts</h2>
+    <ul>
+      {{#each posts as |post|}}
+      <li class='is-flex is-justify-content-space-between my-5' data-postid='{{this.id}}'>
+        <a href='/posts/{{this.id}}' class="pr-3">{{this.title}}</a>
+        {{> metadata}}
+      </li>
+      {{/each}}
+    </ul>
+  </div>
+</main>

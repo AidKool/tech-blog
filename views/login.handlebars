@@ -1,21 +1,23 @@
-<div class='container'>
-  <section class='columns my-auto form-container'>
-    <section class='column'>
-      <p class='is-size-4 has-text-centered has-text-weight-bold mb-4'>Log in to
-        publish a post or add comments</p>
-      <section class='card px-5 py-5 my-0 mx-auto'>
-        <form class="login-form">
-          {{> username-password-partial}}
-          <div class='field my-4'>
-            <div class='control'>
-              <button class='button is-link' type='submit'>Log In</button>
+<main class="section px-4 is-flex is-align-items-center">
+  <div class='container'>
+    <section class='form-container'>
+      <section>
+        <p class='is-size-4 has-text-centered has-text-weight-bold mb-4'>Log in to
+          publish a post or add comments</p>
+        <section class='card px-5 py-5 my-0 mx-auto'>
+          <form class="login-form">
+            {{> username-password-partial}}
+            <div class='field my-4'>
+              <div class='control'>
+                <button class='button is-link' type='submit'>Log In</button>
+              </div>
             </div>
-          </div>
-        </form>
-        {{> separator-partial}}
-        <a href='/signup' class='button is-primary mx-auto'>Sign Up</a>
+          </form>
+          {{> separator-partial}}
+          <a href='/signup' class='button is-primary mx-auto'>Sign Up</a>
+        </section>
       </section>
     </section>
-  </section>
-</div>
+  </div>
+</main>
 <script src="/js/login.js"></script>

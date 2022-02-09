@@ -1,65 +1,67 @@
-<div class='container'>
-  <p class='add-post has-text-link has-text-weight-bold'>Add post</p>
-  <div class='post-form-container mb-3'>
-    <form class='post-form'>
-      <div class='field'>
-        <label for='post-title'>Title</label>
-        <p class='control'>
-          <input
-            type='text'
-            name='post-title'
-            id='post-title'
-            placeholder='Title'
-          />
-        </p>
-      </div>
-      <div class='field'>
-        <label for='post-content'>Post Content</label>
-        <p class='control'>
-          <textarea
-            type='text'
-            name='post-content'
-            id='post-content'
-            placeholder='Post Content'
-          ></textarea>
-        </p>
-      </div>
-      <div class='field my-4'>
-        <div class='control'>
-          <button class='button is-link' type='submit'>Submit</button>
-          <button class='button is-danger cancel-btn'>Cancel</button>
+<main class='section px-4'>
+  <div class='container'>
+    <p class='add-post has-text-link has-text-weight-bold'>Add post</p>
+    <div class='post-form-container mb-3'>
+      <form class='post-form'>
+        <div class='field'>
+          <label for='post-title'>Title</label>
+          <p class='control'>
+            <input
+              type='text'
+              name='post-title'
+              id='post-title'
+              placeholder='Title'
+            />
+          </p>
         </div>
-      </div>
-    </form>
+        <div class='field'>
+          <label for='post-content'>Post Content</label>
+          <p class='control'>
+            <textarea
+              type='text'
+              name='post-content'
+              id='post-content'
+              placeholder='Post Content'
+            ></textarea>
+          </p>
+        </div>
+        <div class='field my-4'>
+          <div class='control'>
+            <button class='button is-link' type='submit'>Submit</button>
+            <button class='button is-danger cancel-btn'>Cancel</button>
+          </div>
+        </div>
+      </form>
+    </div>
+    {{#if posts}}
+      <ul class='post-list'>
+        {{#each posts}}
+          <li
+            class='is-flex is-justify-content-space-between'
+            data-postid='{{this.id}}'
+          >
+            <span>
+              <i class='far fa-edit edit-btn'></i>
+              <i class='far fa-trash-alt delete-btn'></i>
+              <a href='/posts/{{this.id}}' class=''>{{this.title}}</a>
+            </span>
+            <span class='is-size-7'>
+              {{#if updated}}
+                Updated
+                {{format_date updatedAt}}
+                ago
+              {{else}}
+                Posted
+                {{format_date createdAt}}
+                ago
+              {{/if}}
+            </span>
+          </li>
+        {{/each}}
+      </ul>
+    {{else}}
+      <p class='first-post'>Don't be shy and add your first post!</p>
+    {{/if}}
   </div>
-  {{#if posts}}
-    <ul class='post-list'>
-      {{#each posts}}
-        <li
-          class='is-flex is-justify-content-space-between'
-          data-postid='{{this.id}}'
-        >
-          <span>
-            <i class='far fa-edit edit-btn'></i>
-            <i class='far fa-trash-alt delete-btn'></i>
-            <a href='/posts/{{this.id}}' class=''>{{this.title}}</a>
-          </span>
-          <span class='is-size-7'>
-            {{#if updated}}
-              Updated
-              {{format_date updatedAt}}
-              ago
-            {{else}}
-              Posted
-              {{format_date createdAt}}
-              ago
-            {{/if}}
-          </span>
-        </li>
-      {{/each}}
-    </ul>
-  {{else}}
-    <p class='first-post'>Don't be shy and add your first post!</p>
-  {{/if}}
-</div>
+</main>
 <script src='/js/posts.js'></script>
