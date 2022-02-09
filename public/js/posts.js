@@ -34,7 +34,9 @@ const showAddPostForm = () => {
 
 const hideAddPostForm = () => {
   postFormContainer.style.height = 0;
-  addPostBtn.style.display = 'block';
+  setTimeout(() => {
+    addPostBtn.style.display = 'block';
+  }, 350);
   const postList = document.querySelector('.post-list');
   if (!postList) {
     if (firstPost) {
