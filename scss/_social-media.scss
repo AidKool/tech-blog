@@ -1,0 +1,85 @@
+.social-media .icon {
+  width: 45px !important;
+  height: 45px !important;
+  padding: 0;
+}
+
+.social-media .icon:first-of-type {
+  margin-left: 0;
+}
+
+.social-media .icon {
+  width: 50px;
+  height: 50px;
+  background-color: $white;
+  margin: 10px;
+  border-radius: 30%;
+  box-shadow: $icon-box-shadow;
+  position: relative;
+  overflow: hidden;
+  border: none;
+}
+
+.youtube-icon {
+  color: $youtube-red !important;
+}
+
+.linkedin-icon {
+  color: $linkedin-blue !important;
+}
+
+.github-icon {
+  color: $github-black !important;
+}
+
+.social-media icon i {
+  line-height: 90px;
+  font-size: 25px;
+  transition: all 0.2;
+}
+
+.social-media .icon:hover i {
+  transform: scale(1.3);
+  color: $white;
+}
+
+.social-media .icon:before {
+  content: '';
+  position: absolute;
+  width: 120%;
+  height: 120%;
+  left: -110%;
+  top: 90%;
+  transform: rotate(45deg);
+}
+
+.youtube-icon:before {
+  background-color: $youtube-red;
+}
+
+.linkedin-icon:before {
+  background-color: $linkedin-blue;
+}
+
+.github-icon:before {
+  background-color: $github-black;
+}
+
+.social-media .icon:hover:before {
+  animation: icon-animation $icon-animation;
+}
+
+@keyframes icon-animation {
+  0% {
+    left: -110%;
+    top: 90%;
+  }
+  50% {
+    left: 15%;
+    top: -30%;
+  }
+  100% {
+    left: -10%;
+    top: -10%;
+  }
+}
