@@ -1,5 +1,8 @@
-const { formatDistance } = require('date-fns');
-
 module.exports = {
-  format_date: (date) => formatDistance(new Date(date), new Date()),
+  format_date: (date) =>
+    Intl.DateTimeFormat('default', {
+      day: 'numeric',
+      month: 'short',
+      year: 'numeric',
+    }).format(new Date(date)),
 };
