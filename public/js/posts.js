@@ -69,7 +69,7 @@ const submitPost = async (event) => {
 const updatePost = async (event) => {
   event.preventDefault();
 
-  const id = JSON.parse(localStorage.getItem('postId'));
+  const id = postForm.dataset.postid;
 
   const title = document.querySelector('#post-title').value.trim();
   const content = document.querySelector('#post-content').value.trim();
@@ -81,7 +81,6 @@ const updatePost = async (event) => {
       headers: { 'Content-Type': 'application/json' },
     });
     if (response.ok) {
-      localStorage.clear();
       document.location.reload();
     } else {
       alert('Failed to add the post.');
@@ -89,18 +88,9 @@ const updatePost = async (event) => {
   }
 };
 
-postForm.addEventListener('submit', (event) => {
-  event.preventDefault();
-  if (JSON.parse(localStorage.getItem('postId'))) {
-    updatePost(event);
-  } else {
-    submitPost(event);
-  }
-});
-
 const loadPost = async (event) => {
   const id = event.currentTarget.parentElement.parentElement.dataset.postid;
-  localStorage.setItem('postId', id);
+  postForm.setAttribute('data-postid', id);
 
   const response = await fetch(`posts/${id}`, {
     method: 'GET',
@@ -114,4 +104,13 @@ const loadPost = async (event) => {
 
 editBtns.forEach((editBtn) => {
   editBtn.addEventListener('click', loadPost);
+});
+
+postForm.addEventListener('submit', (event) => {
+  event.preventDefault();
+  if (postForm.dataset.postid) {
+    updatePost(event);
+  } else {
+    submitPost(event);
+  }
 });
