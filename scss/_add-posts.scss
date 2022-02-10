@@ -1,9 +1,3 @@
-.post-form-container {
-  height: 0;
-  overflow: hidden;
-  transition: $toggle-transition;
-}
-
 .post-form input,
 .post-form textarea {
   width: 100%;
@@ -12,8 +6,4 @@
 
 .post-form textarea {
   height: 75px;
-}
-
-.add-post:hover {
-  cursor: pointer;
 }

@@ -1,0 +1,11 @@
+.post-form-container,
+.comment-form-container {
+  height: 0;
+  overflow: hidden;
+  transition: $toggle-transition;
+}
+
+.add-comment:hover,
+.add-post:hover {
+  cursor: pointer;
+}
