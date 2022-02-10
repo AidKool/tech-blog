@@ -8,8 +8,8 @@ const commentFormHandler = async (event) => {
   event.preventDefault();
 
   const content = document.querySelector('#comment').value.trim();
-  const cardHeader = document.querySelector('.card header.card-header');
-  const postId = cardHeader.dataset.postid;
+  const articleHeader = document.querySelector('.article-header');
+  const postId = articleHeader.dataset.postid;
 
   if (content) {
     const response = await fetch('/api/comments', {
