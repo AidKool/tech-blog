@@ -9,3 +9,9 @@
 .add-post:hover {
   cursor: pointer;
 }
+
+.post-list i:hover,
+.comment-list i:hover {
+  cursor: pointer;
+  transform: scale(1.25);
+}
