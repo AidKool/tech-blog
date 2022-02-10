@@ -53,7 +53,7 @@ const hideAddCommentForm = () => {
 cancelBtn.addEventListener('click', hideAddCommentForm);
 
 const deleteComment = async (event) => {
-  const id = event.currentTarget.parentElement.parentElement.dataset.postid;
+  const id = event.currentTarget.parentElement.parentElement.dataset.commentid;
   const response = await fetch(`/api/comments/${id}`, {
     method: 'DELETE',
     headers: { 'Content-Type': 'application/json' },
@@ -91,7 +91,7 @@ const updateComment = async (event) => {
 };
 
 const loadComment = async (event) => {
-  const id = event.currentTarget.parentElement.parentElement.dataset.postid;
+  const id = event.currentTarget.parentElement.parentElement.dataset.commentid;
   localStorage.setItem('commentId', id);
 
   const response = await fetch(`/api/comments/${id}`);
