@@ -7,9 +7,11 @@ const toggleMenu = () => {
   const menuHeight = menu.getBoundingClientRect().height;
 
   if (menuContainerHeight === 0) {
+    menuBtn.classList.add('is-active');
     menuContainer.style.height = `${menuHeight}px`;
   } else {
     menuContainer.style.height = 0;
+    menuBtn.classList.remove('is-active');
   }
 };
 
