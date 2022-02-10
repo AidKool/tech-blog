@@ -3,3 +3,13 @@ textarea#comment {
   width: 100%;
   padding: 0.5rem;
 }
+
+.comment-form-container {
+  height: 0;
+  overflow: hidden;
+  transition: $toggle-transition;
+}
+
+.add-comment:hover {
+  cursor: pointer;
+}

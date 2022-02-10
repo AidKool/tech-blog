@@ -1,3 +1,8 @@
+const commentFormContainer = document.querySelector('.comment-form-container');
+const commentForm = document.querySelector('.comment-form');
+const addCommentBtn = document.querySelector('.add-comment');
+const cancelBtn = document.querySelector('.cancel-btn');
+
 const commentFormHandler = async (event) => {
   event.preventDefault();
 
@@ -20,6 +25,21 @@ const commentFormHandler = async (event) => {
   }
 };
 
-document
-  .querySelector('.comment-form')
-  .addEventListener('submit', commentFormHandler);
+commentForm.addEventListener('submit', commentFormHandler);
+
+const showAddCommentForm = () => {
+  const commentFormHeight = commentForm.getBoundingClientRect().height;
+  commentFormContainer.style.height = `${commentFormHeight}px`;
+  addCommentBtn.style.display = 'none';
+};
+
+addCommentBtn.addEventListener('click', showAddCommentForm);
+
+const hideAddCommentForm = () => {
+  commentFormContainer.style.height = 0;
+  setTimeout(() => {
+    addCommentBtn.style.display = 'block';
+  }, 350);
+};
+
+cancelBtn.addEventListener('click', hideAddCommentForm);
