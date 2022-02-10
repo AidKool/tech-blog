@@ -27,22 +27,18 @@ const showAddPostForm = () => {
   const postFormHeight = postForm.getBoundingClientRect().height;
   postFormContainer.style.height = `${postFormHeight}px`;
   addPostBtn.style.display = 'none';
-  if (firstPost) {
-    firstPost.style.display = 'none';
-  }
+  firstPost.style.display = 'none';
 };
 
 const hideAddPostForm = () => {
   postFormContainer.style.height = 0;
+  const postList = document.querySelector('.post-list');
   setTimeout(() => {
     addPostBtn.style.display = 'block';
-  }, 350);
-  const postList = document.querySelector('.post-list');
-  if (!postList) {
-    if (firstPost) {
+    if (!postList) {
       firstPost.style.display = 'block';
     }
-  }
+  }, 350);
 };
 
 addPostBtn.addEventListener('click', showAddPostForm);
