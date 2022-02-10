@@ -1,6 +1,15 @@
 const router = require('express').Router();
 const { Comment } = require('../../models');
 
+router.get('/:id', async (req, res) => {
+  try {
+    const commentData = await Comment.findByPk(req.params.id);
+    return res.status(200).json(commentData);
+  } catch (error) {
+    return res.status(500).json(error);
+  }
+});
+
 router.post('/', async (req, res) => {
   try {
     await Comment.create({
@@ -14,7 +23,7 @@ router.post('/', async (req, res) => {
   }
 });
 
-router.put('/:id', async (req, res) => {
+router.patch('/:id', async (req, res) => {
   try {
     await Comment.update(
       { ...req.body, updated: true },

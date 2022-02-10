@@ -69,7 +69,7 @@ const submitPost = async (event) => {
 const updatePost = async (event) => {
   event.preventDefault();
 
-  const id = JSON.parse(localStorage.getItem('id'));
+  const id = JSON.parse(localStorage.getItem('postId'));
 
   const title = document.querySelector('#post-title').value.trim();
   const content = document.querySelector('#post-content').value.trim();
@@ -91,7 +91,7 @@ const updatePost = async (event) => {
 
 postForm.addEventListener('submit', (event) => {
   event.preventDefault();
-  if (JSON.parse(localStorage.getItem('id'))) {
+  if (JSON.parse(localStorage.getItem('postId'))) {
     updatePost(event);
   } else {
     submitPost(event);
@@ -100,7 +100,7 @@ postForm.addEventListener('submit', (event) => {
 
 const loadPost = async (event) => {
   const id = event.currentTarget.parentElement.parentElement.dataset.postid;
-  localStorage.setItem('id', id);
+  localStorage.setItem('postId', id);
 
   const response = await fetch(`posts/${id}`, {
     method: 'GET',

@@ -6,7 +6,7 @@ const firstComment = document.querySelector('.first-comment');
 const deleteBtns = document.querySelectorAll('.delete-btn');
 const editBtns = document.querySelectorAll('.edit-btn');
 
-const commentFormHandler = async (event) => {
+const submitComment = async (event) => {
   event.preventDefault();
 
   const content = document.querySelector('#comment').value.trim();
@@ -28,13 +28,13 @@ const commentFormHandler = async (event) => {
   }
 };
 
-commentForm.addEventListener('submit', commentFormHandler);
-
 const showAddCommentForm = () => {
   const commentFormHeight = commentForm.getBoundingClientRect().height;
   commentFormContainer.style.height = `${commentFormHeight}px`;
   addCommentBtn.style.display = 'none';
-  firstComment.style.display = 'none';
+  if (firstComment) {
+    firstComment.style.display = 'none';
+  }
 };
 
 addCommentBtn.addEventListener('click', showAddCommentForm);
@@ -67,4 +67,48 @@ const deleteComment = async (event) => {
 
 deleteBtns.forEach((deleteBtn) => {
   deleteBtn.addEventListener('click', deleteComment);
+});
+
+const updateComment = async (event) => {
+  event.preventDefault();
+
+  const id = JSON.parse(localStorage.getItem('commentId'));
+  const content = document.querySelector('#comment').value.trim();
+
+  if (content) {
+    const response = await fetch(`/api/comments/${id}`, {
+      method: 'PATCH',
+      body: JSON.stringify({ content }),
+      headers: { 'Content-Type': 'application/json' },
+    });
+    if (response.ok) {
+      localStorage.clear();
+      document.location.reload();
+    } else {
+      alert('Failed to update the comment.');
+    }
+  }
+};
+
+const loadComment = async (event) => {
+  const id = event.currentTarget.parentElement.parentElement.dataset.postid;
+  localStorage.setItem('commentId', id);
+
+  const response = await fetch(`/api/comments/${id}`);
+  const data = await response.json();
+  showAddCommentForm();
+  document.querySelector('#comment').value = data.content;
+};
+
+editBtns.forEach((editBtn) => {
+  editBtn.addEventListener('click', loadComment);
+});
+
+commentForm.addEventListener('submit', (event) => {
+  event.preventDefault();
+  if (JSON.parse(localStorage.getItem('commentId'))) {
+    updateComment(event);
+  } else {
+    submitComment(event);
+  }
 });
