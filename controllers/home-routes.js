@@ -75,6 +75,7 @@ router.get('/posts/:id', async (req, res) => {
     return res.render('single-post', {
       ...postAndComments,
       loggedIn: req.session.loggedIn,
+      sessionUser: req.session.user,
     });
     // return res.status(200).json(postAndComments);
   } catch (error) {

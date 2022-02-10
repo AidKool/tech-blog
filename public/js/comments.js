@@ -3,6 +3,8 @@ const commentForm = document.querySelector('.comment-form');
 const addCommentBtn = document.querySelector('.add-comment');
 const cancelBtn = document.querySelector('.cancel-btn');
 const firstComment = document.querySelector('.first-comment');
+const deleteBtns = document.querySelectorAll('.delete-btn');
+const editBtns = document.querySelectorAll('.edit-btn');
 
 const commentFormHandler = async (event) => {
   event.preventDefault();
@@ -49,3 +51,20 @@ const hideAddCommentForm = () => {
 };
 
 cancelBtn.addEventListener('click', hideAddCommentForm);
+
+const deleteComment = async (event) => {
+  const id = event.currentTarget.parentElement.parentElement.dataset.postid;
+  const response = await fetch(`/api/comments/${id}`, {
+    method: 'DELETE',
+    headers: { 'Content-Type': 'application/json' },
+  });
+  if (response.ok) {
+    document.location.reload();
+  } else {
+    alert('Failed to delete comment');
+  }
+};
+
+deleteBtns.forEach((deleteBtn) => {
+  deleteBtn.addEventListener('click', deleteComment);
+});
