@@ -50,7 +50,12 @@ const hideAddCommentForm = () => {
   }, 350);
 };
 
-cancelBtn.addEventListener('click', hideAddCommentForm);
+cancelBtn.addEventListener('click', () => {
+  if (commentForm.dataset.commentid) {
+    commentForm.removeAttribute('data-commentid');
+  }
+  hideAddCommentForm();
+});
 
 const deleteComment = async (event) => {
   const id = event.currentTarget.parentElement.parentElement.dataset.commentid;
@@ -72,7 +77,7 @@ deleteBtns.forEach((deleteBtn) => {
 const updateComment = async (event) => {
   event.preventDefault();
 
-  const id = JSON.parse(localStorage.getItem('commentId'));
+  const id = commentForm.dataset.commentid;
   const content = document.querySelector('#comment').value.trim();
 
   if (content) {
@@ -82,7 +87,6 @@ const updateComment = async (event) => {
       headers: { 'Content-Type': 'application/json' },
     });
     if (response.ok) {
-      localStorage.clear();
       document.location.reload();
     } else {
       alert('Failed to update the comment.');
@@ -92,7 +96,7 @@ const updateComment = async (event) => {
 
 const loadComment = async (event) => {
   const id = event.currentTarget.parentElement.parentElement.dataset.commentid;
-  localStorage.setItem('commentId', id);
+  commentForm.setAttribute('data-commentid', id);
 
   const response = await fetch(`/api/comments/${id}`);
   const data = await response.json();
@@ -106,7 +110,7 @@ editBtns.forEach((editBtn) => {
 
 commentForm.addEventListener('submit', (event) => {
   event.preventDefault();
-  if (JSON.parse(localStorage.getItem('commentId'))) {
+  if (commentForm.dataset.commentid) {
     updateComment(event);
   } else {
     submitComment(event);
