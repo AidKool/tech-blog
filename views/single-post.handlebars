@@ -18,14 +18,15 @@
       <a href="/signup">Sign up</a> or <a href="/login">log in</a> to post a comment
     </p>
     {{/if}}
+    {{#if comments}}
     <p class="mb-3 mt-3 subtitle">Latest Replies:</p>
-    <ul>
-      {{#each this.comments}}
+    <ul class="comment-list">
+      {{#each comments}}
       <li>
         <div class="card mb-3">
           <header class="card-header py-2 px-3 is-size-7 has-background-grey is-flex is-justify-content-space-between">
             <p class="has-text-black has-text-weight-bold">
-              <span class="has-text-white has-text-weight-bold">{{this.user.username}}</span> replied
+              <span class="has-text-white has-text-weight-bold">{{user.username}}</span> replied
             </p>
             <p class="has-text-weight-bold has-text-black">
               {{#if updated}}
@@ -42,6 +43,9 @@
       </li>
       {{/each}}
     </ul>
+    {{else}}
+      <p class="mb-3 mt-3 first-comment">Be the first to comment!</p>
+    {{/if}}
   </section>
 </main>
 {{#if loggedIn}}
