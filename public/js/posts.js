@@ -27,7 +27,9 @@ const showAddPostForm = () => {
   const postFormHeight = postForm.getBoundingClientRect().height;
   postFormContainer.style.height = `${postFormHeight}px`;
   addPostBtn.style.display = 'none';
-  firstPost.style.display = 'none';
+  if (firstPost) {
+    firstPost.style.display = 'none';
+  }
 };
 
 const hideAddPostForm = () => {
