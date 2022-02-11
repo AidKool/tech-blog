@@ -29,7 +29,6 @@ const submitComment = async (event) => {
 };
 
 const showAddCommentForm = () => {
-  commentFormContainer.classList.remove('overflow-hidden');
   commentFormContainer.style.height = `auto`;
   addCommentBtn.style.display = 'none';
   if (firstComment) {
@@ -46,7 +45,6 @@ const hideAddCommentForm = () => {
   if (!commentList) {
     firstComment.style.display = 'block';
   }
-  // commentFormContainer.classList.add('overflow-hidden');
 };
 
 cancelBtn.addEventListener('click', () => {
