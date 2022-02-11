@@ -29,8 +29,8 @@ const submitComment = async (event) => {
 };
 
 const showAddCommentForm = () => {
-  const commentFormHeight = commentForm.getBoundingClientRect().height;
-  commentFormContainer.style.height = `${commentFormHeight}px`;
+  commentFormContainer.classList.remove('overflow-hidden');
+  commentFormContainer.style.height = `auto`;
   addCommentBtn.style.display = 'none';
   if (firstComment) {
     firstComment.style.display = 'none';
@@ -42,12 +42,11 @@ addCommentBtn.addEventListener('click', showAddCommentForm);
 const hideAddCommentForm = () => {
   commentFormContainer.style.height = 0;
   const commentList = document.querySelector('.comment-list');
-  setTimeout(() => {
-    addCommentBtn.style.display = 'block';
-    if (!commentList) {
-      firstComment.style.display = 'block';
-    }
-  }, 350);
+  addCommentBtn.style.display = 'block';
+  if (!commentList) {
+    firstComment.style.display = 'block';
+  }
+  commentFormContainer.classList.add('overflow-hidden');
 };
 
 cancelBtn.addEventListener('click', () => {

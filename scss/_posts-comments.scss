@@ -1,8 +1,14 @@
 .post-form-container,
 .comment-form-container {
   height: 0;
-  overflow: hidden;
-  transition: $toggle-transition;
+}
+
+.post-form textarea,
+.comment-form textarea {
+  height: 150px;
+  width: 100%;
+  padding: 0.5rem;
+  resize: vertical;
 }
 
 .add-comment:hover,
