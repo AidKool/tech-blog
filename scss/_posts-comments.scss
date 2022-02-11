@@ -1,6 +1,7 @@
 .post-form-container,
 .comment-form-container {
   height: 0;
+  overflow: hidden;
 }
 
 .post-form textarea,

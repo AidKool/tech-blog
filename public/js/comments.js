@@ -46,7 +46,7 @@ const hideAddCommentForm = () => {
   if (!commentList) {
     firstComment.style.display = 'block';
   }
-  commentFormContainer.classList.add('overflow-hidden');
+  // commentFormContainer.classList.add('overflow-hidden');
 };
 
 cancelBtn.addEventListener('click', () => {

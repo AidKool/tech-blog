@@ -24,8 +24,7 @@ deleteBtns.forEach((deleteBtn) => {
 });
 
 const showAddPostForm = () => {
-  const postFormHeight = postForm.getBoundingClientRect().height;
-  postFormContainer.style.height = `${postFormHeight}px`;
+  postFormContainer.style.height = 'auto';
   addPostBtn.style.display = 'none';
   if (firstPost) {
     firstPost.style.display = 'none';
@@ -35,12 +34,10 @@ const showAddPostForm = () => {
 const hideAddPostForm = () => {
   postFormContainer.style.height = 0;
   const postList = document.querySelector('.post-list');
-  setTimeout(() => {
-    addPostBtn.style.display = 'block';
-    if (!postList) {
-      firstPost.style.display = 'block';
-    }
-  }, 350);
+  addPostBtn.style.display = 'block';
+  if (!postList) {
+    firstPost.style.display = 'block';
+  }
 };
 
 addPostBtn.addEventListener('click', showAddPostForm);
