@@ -87,7 +87,7 @@ const updateComment = async (event) => {
     if (response.ok) {
       document.location.reload();
     } else {
-      alert('Failed to update the comment.');
+      alert('Failed to update comment.');
     }
   }
 };

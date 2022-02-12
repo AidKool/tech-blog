@@ -59,7 +59,7 @@ const submitPost = async (event) => {
     if (response.ok) {
       document.location.reload();
     } else {
-      alert('Failed to add the post.');
+      alert('Failed to submit post.');
     }
   }
 };
@@ -81,7 +81,7 @@ const updatePost = async (event) => {
     if (response.ok) {
       document.location.reload();
     } else {
-      alert('Failed to add the post.');
+      alert('Failed to update post.');
     }
   }
 };
