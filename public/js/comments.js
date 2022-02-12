@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 const commentFormContainer = document.querySelector('.comment-form-container');
 const commentForm = document.querySelector('.comment-form');
 const addCommentBtn = document.querySelector('.add-comment');
@@ -9,7 +10,7 @@ const editBtns = document.querySelectorAll('.edit-btn');
 const submitComment = async (event) => {
   event.preventDefault();
 
-  const content = document.querySelector('#comment').value.trim();
+  const content = tinymce.activeEditor.getContent();
   const articleHeader = document.querySelector('.article-header');
   const postId = articleHeader.dataset.postid;
 
@@ -75,7 +76,7 @@ const updateComment = async (event) => {
   event.preventDefault();
 
   const id = commentForm.dataset.commentid;
-  const content = document.querySelector('#comment').value.trim();
+  const content = tinymce.activeEditor.getContent();
 
   if (content) {
     const response = await fetch(`/api/comments/${id}`, {
@@ -98,7 +99,7 @@ const loadComment = async (event) => {
   const response = await fetch(`/api/comments/${id}`);
   const data = await response.json();
   showAddCommentForm();
-  document.querySelector('#comment').value = data.content;
+  tinymce.activeEditor.setContent(data.content);
 };
 
 editBtns.forEach((editBtn) => {
@@ -112,4 +113,8 @@ commentForm.addEventListener('submit', (event) => {
   } else {
     submitComment(event);
   }
+});
+
+tinymce.init({
+  selector: 'textarea',
 });
