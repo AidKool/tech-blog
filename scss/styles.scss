@@ -6,9 +6,6 @@
 // bulma
 @import '../node_modules/bulma/bulma.sass';
 
-// media queries
-@import './media';
-
 // reset
 @import './reset';
 
@@ -16,7 +13,7 @@
 @import './navbar';
 
 // signup & login
-@import './signup&login';
+@import './signup-login';
 
 // add posts
 @import './add-posts';
@@ -26,3 +23,9 @@
 
 // common styles for posts and comments
 @import './posts-comments';
+
+@media screen and (min-width: 768px) {
+  .container-extra-padding {
+    padding: 0 3rem;
+  }
+}
