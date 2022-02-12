@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 const deleteBtns = document.querySelectorAll('.delete-btn');
 const editBtns = document.querySelectorAll('.edit-btn');
 const postFormContainer = document.querySelector('.post-form-container');
@@ -47,7 +48,7 @@ const submitPost = async (event) => {
   event.preventDefault();
 
   const title = document.querySelector('#post-title').value.trim();
-  const content = document.querySelector('#post-content').value.trim();
+  const content = tinymce.activeEditor.getContent();
 
   if (title && content) {
     const response = await fetch('/api/posts', {
@@ -69,7 +70,7 @@ const updatePost = async (event) => {
   const id = postForm.dataset.postid;
 
   const title = document.querySelector('#post-title').value.trim();
-  const content = document.querySelector('#post-content').value.trim();
+  const content = tinymce.activeEditor.getContent();
 
   if (title && content) {
     const response = await fetch(`/api/posts/${id}`, {
@@ -96,7 +97,7 @@ const loadPost = async (event) => {
   const data = await response.json();
   showAddPostForm();
   document.querySelector('#post-title').value = data.title;
-  document.querySelector('#post-content').value = data.content;
+  tinymce.activeEditor.setContent(data.content);
 };
 
 editBtns.forEach((editBtn) => {
@@ -110,4 +111,8 @@ postForm.addEventListener('submit', (event) => {
   } else {
     submitPost(event);
   }
+});
+
+tinymce.init({
+  selector: 'textarea',
 });

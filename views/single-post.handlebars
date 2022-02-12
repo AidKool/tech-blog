@@ -10,10 +10,10 @@
       {{#if updated}}
         <p>Updated on {{format_date updatedAt}}</p>
       {{/if}}
-      <hr />
-      <p class='has-text-left'>{{content}}</p>
-      <hr />
     </header>
+    <hr />
+    {{{content}}}
+    <hr />
     {{#if loggedIn}}
       <p
         class='add-comment has-text-link has-text-weight-bold mt-3 is-inline-block'

@@ -70,4 +70,10 @@
     {{/if}}
   </div>
 </main>
-<script src='/js/posts.js'></script>
+{{#if loggedIn}}
+  <script
+    src='https://cdn.tiny.cloud/1/uccagh7sipd0ppslz3vv9jam2ip087bk7jovn7fanb1nsooh/tinymce/5/tinymce.min.js'
+    referrerpolicy='origin'
+  ></script>
+  <script src='/js/posts.js'></script>
+{{/if}}
