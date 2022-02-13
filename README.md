@@ -13,7 +13,7 @@ knowledge with other students and tech enthusiasts
 
 - [License](#license)
 
-- [Live Site](3live)
+- [Live Site](#live)
 
 - [Requirements](#requirements)
 
