@@ -4,8 +4,7 @@
 
 ## Description
 
-A CMS-style tech blog site to allow logged in users share their ideas and
-knowledge with other students and tech enthusiasts
+Technology blog built using an MVC pattern where fellow students and any other tech enthusiasts can talk about technology, share ideas, and help each other.
 
 ![techblog](https://user-images.githubusercontent.com/73796715/153520565-0aece3e5-b0fd-4fcb-af09-abe1c3b59fb5.png)
 
