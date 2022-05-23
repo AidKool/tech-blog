@@ -9,6 +9,7 @@ Technology blog built using an MVC pattern where fellow students and any other t
 ![techblog](https://user-images.githubusercontent.com/73796715/153520565-0aece3e5-b0fd-4fcb-af09-abe1c3b59fb5.png)
 
 ## Table of Contents
+- [Technologies](#technologies)
 
 - [License](#license)
 
@@ -21,6 +22,13 @@ Technology blog built using an MVC pattern where fellow students and any other t
 - [Install](#install)
 
 - [Usage](#usage)
+
+## Technologies
+- Bulma CSS Framework
+- Node.js
+- Express.js
+- Handlebars
+- Sequelize
 
 ## License
 
